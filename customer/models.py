@@ -1,8 +1,5 @@
 from django.db import models
 
-# Create your models here.
-from django.db import models
-
 from users.models import User, NULLABLE
 
 
@@ -19,3 +16,7 @@ class Customer(models.Model):
     class Meta:
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
+
+        permissions = {
+            ('can_view_customers', 'Can view customers')
+        }
