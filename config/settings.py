@@ -36,8 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_crontab',
+
     'users',
     'customer',
+    'sending',
 ]
 
 MIDDLEWARE = [
@@ -149,3 +152,13 @@ EMAIL_HOST_PASSWORD = 'xcjfyjzymlidhnrw'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
+
+LOGIN_REDIRECT_URL = '/users/profile'
+LOGOUT_REDIRECT_URL = '/users/login'
+
+LOGOUT_URL = 'users/logout'
+
+CRONJOBS = [
+    ('*/1 * * * *', 'sending.cron.py.sending_mail'),
+
+]

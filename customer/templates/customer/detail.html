@@ -4,7 +4,7 @@
 
 {%  block content %}
     <div class="container">
- {% for object in object_list %}
+
    <div class="row text-center">
                 <div class="col-12">
                     <div class="card mb-4 box-shadow">
@@ -17,17 +17,14 @@
 
                             <ul class="list-unstyled mt-3 mb-4 text-center m-3 bg-light" >
                                 <li>Фамилия: {{ object.last_name}}</li>
-
+                                <li>Почта: {{ object.email}}</li>
+                                <li>Создатель: {{ object.creator}}</li>
 
                             </ul>
-
-                            <a type="button" href="{% url 'user:blocked_user' object.id %}"
-                               class="btn btn-lg btn-block btn-danger">Блокировка пользователя</a>
-
                         </div>
                     </div>
                 </div>
             </div>
-    {% endfor %}
+
     </div>
 {% endblock %}
