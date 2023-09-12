@@ -40,9 +40,3 @@ class UserProfileForm(UserChangeForm):
 
         for filed_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control py-4'
-
-
-class UserBlockedForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('is_active',)

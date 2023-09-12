@@ -2,7 +2,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
 from users.apps import UsersConfig
-from users.views import RegisterUser, ProfileUser, ListUsersView, confirm_code, DeleteUserView, BlockUser
+from users.views import RegisterUser, ProfileUser, ListUsersView, confirm_code, DeleteUserView
 
 app_name = UsersConfig.name
 
@@ -14,5 +14,4 @@ urlpatterns = [
     path('confirm_code/<str:email>/', confirm_code, name='confirm_code'),
     path('delete/<int:pk>/', DeleteUserView.as_view(), name='delete'),
     path('profile/', ProfileUser.as_view(), name='profile'),
-    path('blocked_user/<int:pk>/', BlockUser.as_view(), name='blocked_user'),
 ]
