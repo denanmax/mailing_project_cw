@@ -7,12 +7,12 @@ from users.models import User
 
 
 class UserRegisterForm(UserCreationForm):
-    first_name = forms.CharField(max_length=12, min_length=4, required=True, help_text='Required: First Name',
+    first_name = forms.CharField(max_length=50, min_length=2, required=True, help_text='Имя',
                                  widget=forms.TextInput(
                                      attrs={'class': 'form-control', 'placeholder': 'Имя'}))
-    last_name = forms.CharField(max_length=12, min_length=4, required=True, help_text='Required: Last Name',
+    last_name = forms.CharField(max_length=50, min_length=2, required=True, help_text='Фамилия',
                                 widget=(forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Фамилия'})))
-    email = forms.EmailField(max_length=50, help_text='Required. Inform a valid email address.',
+    email = forms.EmailField(max_length=50, help_text='Введите почту',
                              widget=(forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email'})))
     password1 = forms.CharField(label=_('Password'),
                                 widget=(forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Пароль'})),
@@ -20,7 +20,7 @@ class UserRegisterForm(UserCreationForm):
     password2 = forms.CharField(label=_('Password Confirmation'),
                                 widget=forms.PasswordInput(
                                     attrs={'class': 'form-control', 'placeholder': 'Повторите пароль'}),
-                                help_text=_('Just Enter the same password, for confirmation'))
+                                help_text=_('Подтвердите пароль'))
 
     class Meta:
         model = User
@@ -40,3 +40,9 @@ class UserProfileForm(UserChangeForm):
 
         for filed_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control py-4'
+
+
+class UserBlockedForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('is_active',)
