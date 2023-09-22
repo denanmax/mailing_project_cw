@@ -20,6 +20,3 @@ class Customer(models.Model):
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
 
-        permissions = {
-            ('can_view_customers', 'Can view customers')
-        }
