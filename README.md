@@ -18,7 +18,7 @@
 
 ### Главная страница
 
-[**картинка главной](https://github.com/denanmax/mailing_project_cw/blob/developer/image%20fo%20readme/%D0%93%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F.png)
+[(https://github.com/denanmax/mailing_project_cw/blob/developer/image%20fo%20readme/%D0%93%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F.png)]
  
 Данные о рассылках: Количество рассылок, Количество активных рассылок, Количество клиентов
 
@@ -29,7 +29,7 @@
 Таблика с данными, где можно в дополнении Удалить, редактировать, отправить и Отключить (самостоятельно).
 ### Логи
 
-** картинка лого
+** картинка логов https://github.com/denanmax/mailing_project_cw/blob/developer/image%20fo%20readme/%D0%9B%D0%BE%D0%B3%D0%B8.png
 
 информация о попытках отправки
 
