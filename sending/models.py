@@ -65,7 +65,8 @@ class Sending(models.Model):
             (
                 'can_disable_sending',
                 'Can disable sending'
-            )
+            ),
+
         ]
 
     def get_customer(self):

@@ -1,3 +1,5 @@
+import random
+
 from django.core.cache import cache
 
 from config.settings import CACHE_ENABLED
@@ -15,3 +17,8 @@ def get_users():
         users_list = User.objects.all()
 
     return users_list
+
+
+def generate_code():
+    random.seed()
+    return str(random.randint(10000, 99999))

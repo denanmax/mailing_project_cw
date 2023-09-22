@@ -3,7 +3,7 @@ from datetime import datetime, date, time
 from django.core.mail import send_mail
 
 from sending.models import Sending, Log
-from sending.utils import install_next_date
+from sending.services import install_next_date
 from config import settings
 
 
