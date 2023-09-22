@@ -1,108 +1,71 @@
 {% load static %}
-<!DOCTYPE html>
+
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% if title %}{{ title }} - {% endif %} Рассылка писем</title>
+
+    <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-</head>
-<body>
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
-    <div class="container-fluid">
-     <a class="navbar-brand" href="#">Главная {% now "D d M Y" %} </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/pricing.css' %}" rel="stylesheet">
+  </head>
 
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                {% if user.is_authenticated %}
-
-                    {#                    <li class="nav-item">#}
-                    {#                        <a class="nav-link" href="#">Profile</a>#}
-                    {#                    </li>#}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Операции с письмами</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Создать письмо</a></li>
-                            <li><a class="dropdown-item" href="#">Список писем</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Операции с рассылками</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Создать рассылку</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Список рассылок</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Отчеты о рассылках</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Клиенты</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#' %}">Создать клиента</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Список клиентов</a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-
-
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ user.email }}</a>
-                            <li><a class="dropdown-item" href="{% url 'users:logout' %}">Выйти</a>
-                            </li>
-                            <li><a class="dropdown-item" href="{% url 'users:profile' %}">Профиль</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="p-2 btn btn-outline-light" href="{% url 'users:list_users' %}">Список пользователей</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="p-2 btn btn-outline-light" href="#">Блог</a>
-                    </li>
-            </ul>
-
-
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'user:login' %}">Войти</a>
-                    </li>
-                {% endif %}
-        </div>
+  <body>
+    {% include 'users/navbar.html' %}
+    <div class="container-fluid text-center">
+        {% block main %}
+        {% endblock %}
     </div>
-</nav>
-<br>
-<br>
-<br>
-<div class="album py-5 bg-light">
-    <div class="container">
-        <div class="row">
+
+    <div class="container-fluid">
+        <div class="card-deck mb-3 text-center">
             {% block content %}
             {% endblock %}
         </div>
     </div>
-</div>
-<div class="container">
-    <footer class="py-3 my-4">
 
-        <p class="text-center text-muted">&copy; 2023 Sky Сorporation</p>
-    </footer>
-</div>
+        </div>
+      </div>
+
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+          <div class="col-12 col-md">
+            <img class="mb-2" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+            <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+          </div>
+          <div class="col-6 col-md">
+            {% if user.is_authenticated %}
+            <h5>Добавить</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="p-2" href="{% url 'customer:create_customer' %}">Добавить Клиента</a></li>
+                <li><a class="p-2" href="{% url 'sending:create_message' %}">Добавить Письмо</a></li>
+                <li><a class="p-2" href="{% url 'sending:create_sending' %}">Добавить Рассылку</a></li>
+                <li><a class="p-2" href="{% url 'sending:log' %}">Логи</a></li>
+            {% endif %}
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
 
 
-<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-</body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/holder.min.js' %}"></script>
+    <script>
+      Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+      });
+    </script>
+  </body>
 </html>

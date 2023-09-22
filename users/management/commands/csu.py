@@ -11,7 +11,7 @@ class Command(BaseCommand):
             is_staff=True,
             is_active=True,
             is_superuser=True,
-            verify_code='0000'
+            verify_code='1234'
         )
         user.set_password('z1243')
         user.save()
