@@ -42,4 +42,4 @@
     Не может управлять списком рассылок.
     Не может изменять рассылки и сообщения.
 Добавить через админку 
-[**Админка](https://github.com/denanmax/mailing_project_cw/blob/developer/image%20fo%20readme/%D0%9C%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80.png)
+[**Админка](https://github.com/denanmax/mailing_project_cw/blob/developer/image%20fo%20readme/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202023-09-22%2017-56-22.png)
