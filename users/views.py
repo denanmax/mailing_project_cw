@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -9,8 +9,7 @@ from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from config import settings
 from users.forms import UserRegisterForm, UserProfileForm, UserBlockedForm
 from users.models import User
-from users.services import get_users
-from users.utils import generate_code
+from users.services import get_users, generate_code
 
 
 class RegisterUser(CreateView):
@@ -38,8 +37,6 @@ class RegisterUser(CreateView):
             )
 
         return super().form_valid(form)
-
-
 
 
 def confirm_code(request, email):
@@ -102,6 +99,23 @@ class ProfileUser(UpdateView):
         messages.error(self.request, 'Данные изменены')
         super().form_valid(form)
         return HttpResponseRedirect(self.get_success_url())
+
+
+class BlockUser(PermissionRequiredMixin, UpdateView):
+    permission_required = 'user.can_block_user'
+    model = User
+    form_class = UserBlockedForm
+    template_name = 'users/block_user.html'
+    extra_context = {
+        'title': 'Блокировка пользователя'
+    }
+
+    def post(self, request, *args, **kwargs):
+        if self.request.method == 'POST':
+            user_object = User.objects.get(id=kwargs['pk'])
+            user_object.is_active = False
+            user_object.save()
+            return HttpResponseRedirect(reverse('users:list_users'))
 
 
 class BlockUser(PermissionRequiredMixin, UpdateView):
