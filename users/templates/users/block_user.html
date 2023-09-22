@@ -12,7 +12,7 @@
                             <form method="post">
                                {% csrf_token %}
                                <p>
-                               Подтвердите блокировку {{ object.email }}?
+                               Подтвердите блокировку {{object.email}}?
                                </p>
                                <button class="btn btn-danger" type="submit">Подтвердить</button>
                                <a type="button" href="{% url 'users:list_users' %}"

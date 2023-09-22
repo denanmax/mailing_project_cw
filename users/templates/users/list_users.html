@@ -25,9 +25,7 @@
                         {% if object.phone %}
                         <li>{{ object.phone }}</li>
                         {% endif %}
-                        {% if perms.user.can_block_user %}
-                            <a type="button" href="{% url 'user:blocked_user' object.id %}" class="btn btn-lg btn-block btn-danger">Блокировка пользователя</a>
-                        {% endif %}
+                        <a type="button" href="{% url 'user:blocked_user' object.id %}" class="btn btn-lg btn-block btn-danger">Блокировка пользователя</a>
                     </ul>
 
 
