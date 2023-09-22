@@ -11,7 +11,7 @@
                                 {%csrf_token%}
                                 <p>Хотите удалить рассылку "{{object.message.subject}} {{object.pk}}" ?</p>
                                 <button type="submit" class="btn btn-danger">Подтвердить</button>
-                                <a href="{% url 'sending:update_sending' object.pk %}" class="btn btn-warning" >Отмена</a>
+                                <a href="{% url 'sending:list_sending' %}" class="btn btn-warning" >Отмена</a>
                             </form>
                         </div>
                     </div>
